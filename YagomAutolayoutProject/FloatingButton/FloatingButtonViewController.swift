@@ -54,6 +54,14 @@ class FloatingButtonViewController: UIViewController {
                 view.isHidden = !view.isHidden
             }
             
+            // width로 히든 처리하는 방식
+            // 누를 때 기준으로 0이 아니라면 이미 메뉴들이 보이는데
+            // 누른거라서 히든처리를 해주면 된드아
+            print(self.vStackView.bounds.width)
+            if self.vStackView.bounds.width != 0 { self.vStackView.isHidden = true }
+            else { self.vStackView.isHidden = false }
+            
+            // 서브 뷰가 전부 히든인지 보고 처리하는 방식
             if !self.vStackView.arrangedSubviews.contains(where: { view in
                 view.isHidden == false
             }) {
